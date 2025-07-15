@@ -84,7 +84,7 @@ export default function About() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-900">Ongoing Partnership</h3>
-                    <p className="mt-1 text-gray-600">We're here for the long term, not just the initial implementation.</p>
+                    <p className="mt-1 text-gray-600">We&apos;re here for the long term, not just the initial implementation.</p>
                   </div>
                 </div>
               </div>
@@ -106,8 +106,8 @@ export default function About() {
             <div className="mx-auto max-w-3xl">
               <p className="text-lg text-gray-600">
                 Our team brings together deep expertise in technology consulting and business strategy. 
-                We've helped numerous organizations navigate digital transformation challenges, and now 
-                we're focused on helping businesses harness AI's potential while avoiding common pitfalls.
+                We&apos;ve helped numerous organizations navigate digital transformation challenges, and now 
+                we&apos;re focused on helping businesses harness AI&apos;s potential while avoiding common pitfalls.
               </p>
               <p className="mt-4 text-lg text-gray-600">
                 We believe that successful AI implementation requires more than just technical 
@@ -183,7 +183,7 @@ export default function About() {
               Ready to Work Together?
             </h2>
             <p className="mt-4 text-xl text-blue-100">
-              Let's discuss how we can help your business succeed with AI.
+              Let&apos;s discuss how we can help your business succeed with AI.
             </p>
             <div className="mt-8">
               <Link href="/contact">
