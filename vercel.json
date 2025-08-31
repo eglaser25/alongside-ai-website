@@ -1,6 +1,7 @@
 {
-  "trailingSlash": false,
-  "cleanUrls": true,
+  "buildCommand": "echo 'Using static files'",
+  "outputDirectory": "public",
+  "framework": null,
   "headers": [
     {
       "source": "/(.*)",
