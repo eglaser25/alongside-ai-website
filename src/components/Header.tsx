@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -47,8 +47,8 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button href="/contact" size="md">
-              Let's Talk
+            <Button asChild size="default">
+              <Link href="/contact">Let's Talk</Link>
             </Button>
           </div>
 
@@ -81,12 +81,11 @@ export default function Header() {
               ))}
               <div className="mt-4">
                 <Button 
-                  href="/contact" 
-                  size="md" 
+                  asChild
+                  size="default" 
                   className="w-full"
-                  onClick={() => setIsMenuOpen(false)}
                 >
-                  Let's Talk
+                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Let's Talk</Link>
                 </Button>
               </div>
             </div>

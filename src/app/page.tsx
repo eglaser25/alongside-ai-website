@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Sparkles, GraduationCap, ShieldCheck } from 'lucide-react'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import Section from '@/components/Section'
 import FeatureCard from '@/components/FeatureCard'
 import Testimonial from '@/components/Testimonial'
@@ -33,11 +33,11 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Button href="/contact" size="lg">
-                Book a Call
+              <Button asChild size="lg">
+                <Link href="/contact">Book a Call</Link>
               </Button>
-              <Button href="/services" variant="secondary" size="lg">
-                See How We Work
+              <Button asChild variant="outline" size="lg">
+                <Link href="/services">See How We Work</Link>
               </Button>
             </motion.div>
             <motion.p
@@ -140,12 +140,12 @@ export default function Home() {
               Let's map the fastest path from pilot to production.
             </p>
             <Button 
-              href="/contact" 
-              variant="secondary" 
+              asChild
+              variant="outline" 
               size="lg"
               className="bg-white text-brand-600 hover:bg-blue-50 hover:text-brand-700 border-white"
             >
-              Schedule a Free Consultation
+              <Link href="/contact">Schedule a Free Consultation</Link>
             </Button>
           </motion.div>
         </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Card, { CardContent, CardHeader } from '@/components/ui/Card'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -198,7 +198,7 @@ export default function CaseStudies() {
             </p>
             <div className="mt-8">
               <Link href="/contact">
-                <Button variant="secondary" size="lg">
+                <Button variant="outline" size="lg">
                   Start Your AI Journey
                 </Button>
               </Link>
