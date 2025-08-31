@@ -1,105 +1,155 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { Sparkles, GraduationCap, ShieldCheck } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import Section from '@/components/Section'
+import FeatureCard from '@/components/FeatureCard'
+import Testimonial from '@/components/Testimonial'
 
 export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-indigo-100 py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Deploy AI Tools
-              <span className="text-blue-600"> Effectively</span>
+      <section className="bg-gradient-hero py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-ink mb-6">
+              Turn AI Into Business{' '}
+              <span className="text-gradient">Results</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-              We help small and medium businesses define their AI strategy, train teams on commercial tools, 
-              and build custom AI solutions with proper governance guardrails.
+            <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg leading-7 text-muted">
+              We help SMBs turn AI from experiments into measurable outcomes—strategy, hands‑on training, and safe deployment.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/contact">
-                <Button size="lg">Book a Call</Button>
-              </Link>
-              <Link href="/services">
-                <Button variant="outline" size="lg">Learn More</Button>
-              </Link>
-            </div>
-          </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Button href="/contact" size="lg">
+                Book a Call
+              </Button>
+              <Button href="/services" variant="secondary" size="lg">
+                See How We Work
+              </Button>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8 text-sm text-muted"
+            >
+              Trusted by teams in healthcare, CPG, and professional services
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Why Choose Alongside AI?
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              We bridge the gap between AI potential and practical business implementation
-            </p>
-          </div>
-          
-          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">Strategic Approach</h3>
-              <p className="mt-2 text-gray-600">
-                We start with your business goals and create a tailored AI roadmap that delivers measurable results.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">Hands-On Training</h3>
-              <p className="mt-2 text-gray-600">
-                Your team learns to use AI tools effectively with practical workshops and ongoing support.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">Governance & Compliance</h3>
-              <p className="mt-2 text-gray-600">
-                Implement AI safely with proper guardrails, security measures, and compliance frameworks.
-              </p>
-            </div>
+      {/* Features Section */}
+      <Section>
+        <div className="text-center mb-16">
+          <p className="text-xs uppercase tracking-widest text-muted mb-4">Why Choose Alongside AI</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4">
+            We bridge the gap between AI potential and practical business implementation
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <FeatureCard
+            icon={<Sparkles size={24} />}
+            title="Tailored AI Roadmaps"
+            description="We align AI initiatives to revenue and cost goals, not tech demos."
+            delay={0}
+          />
+          <FeatureCard
+            icon={<GraduationCap size={24} />}
+            title="AI Skills That Stick"
+            description="Workshops that deliver daily time savings and repeatable workflows."
+            delay={0.1}
+          />
+          <FeatureCard
+            icon={<ShieldCheck size={24} />}
+            title="Safe, Compliant AI"
+            description="Deploy with guardrails that satisfy security and regulatory needs."
+            delay={0.2}
+          />
+        </div>
+      </Section>
+
+      {/* Social Proof Section */}
+      <Section background="gray">
+        <div className="text-center mb-16">
+          <p className="text-xs uppercase tracking-widest text-muted mb-4">What Our Clients Say</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-ink">
+            Real Results from Real Businesses
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <Testimonial
+            quote="Saved 6-10 hours per week after enablement"
+            name="Sarah Chen"
+            role="Operations Director"
+            company="MedTech Solutions"
+            delay={0}
+          />
+          <Testimonial
+            quote="Finally have AI that actually improves our workflow"
+            name="Marcus Johnson"
+            role="VP Marketing"
+            company="Regional Bank"
+            delay={0.1}
+          />
+          <Testimonial
+            quote="Implemented safely with full compliance confidence"
+            name="Lisa Rodriguez"
+            role="Chief Risk Officer"
+            company="Financial Services"
+            delay={0.2}
+          />
+        </div>
+        
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-accent/10 text-accent font-semibold">
+            <span className="mr-2">📊</span>
+            Average time savings: 6-10 hours per team member per week
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="bg-blue-600 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white">
-              Ready to Transform Your Business with AI?
+      <Section background="gradient" className="text-white">
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Ship AI That Works?
             </h2>
-            <p className="mt-4 text-xl text-blue-100">
-              Let's discuss how we can help you implement AI tools that drive real business value.
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Let's map the fastest path from pilot to production.
             </p>
-            <div className="mt-8">
-              <Link href="/contact">
-                <Button variant="secondary" size="lg">
-                  Schedule a Free Consultation
-                </Button>
-              </Link>
-            </div>
-          </div>
+            <Button 
+              href="/contact" 
+              variant="secondary" 
+              size="lg"
+              className="bg-white text-brand-600 hover:bg-blue-50 hover:text-brand-700 border-white"
+            >
+              Schedule a Free Consultation
+            </Button>
+          </motion.div>
         </div>
-      </section>
+      </Section>
     </div>
   )
 }

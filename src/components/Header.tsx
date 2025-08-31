@@ -1,7 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
+import Button from '@/components/ui/Button'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,8 +21,14 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between items-center">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-900">
-              Alongside AI
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo-main.svg"
+                alt="Alongside AI"
+                width={280}
+                height={56}
+                className="h-12 w-auto"
+              />
             </Link>
           </div>
           
@@ -39,12 +47,9 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="/contact"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-            >
+            <Button href="/contact" size="md">
               Let's Talk
-            </Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -74,13 +79,16 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="bg-blue-600 text-white block px-3 py-2 text-base font-medium rounded-lg mt-4 text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Let's Talk
-              </Link>
+              <div className="mt-4">
+                <Button 
+                  href="/contact" 
+                  size="md" 
+                  className="w-full"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Let's Talk
+                </Button>
+              </div>
             </div>
           </div>
         )}
