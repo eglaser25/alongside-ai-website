@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta httpEquiv="Permissions-Policy" content="payment=*, browsing-topics=(), interest-cohort=()" />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <Layout>{children}</Layout>
       </body>
