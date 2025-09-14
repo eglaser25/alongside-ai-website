@@ -56,7 +56,7 @@ export default function Home() {
                 <Link href="#how-we-work">See How It Works</Link>
               </Button>
             </div>
-            <p className="mt-4 text-sm italic tracking-wide text-gray-500 dark:text-gray-400">
+            <p className="mt-8 text-sm italic tracking-wide text-gray-500 dark:text-gray-400">
               Imagine how far you'll go.
             </p>
           </div>
@@ -272,9 +272,6 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-4 transform transition will-change-transform hover:scale-[1.015] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="Book a Discovery Call">
                 <a href="https://tidycal.com/m8dn423/30-minute-meeting" target="_blank" rel="noopener">Book a Discovery Call</a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-blue-600 text-lg px-8 py-4 transition hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="See How It Works">
-                <Link href="#how-we-work">See How It Works</Link>
               </Button>
             </div>
             <p className="mt-4 text-sm italic tracking-wide text-blue-100">
