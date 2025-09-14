@@ -113,12 +113,12 @@ export default function Home() {
 
       {/* How We Work */}
       <section id="how-we-work" className="py-20 bg-white dark:bg-gray-900">
-        <div className="container mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+            <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-8">
               How We Work
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+            <p className="mx-auto mt-3 max-w-3xl text-center text-foreground/80 leading-relaxed not-prose break-words text-gray-700 dark:text-gray-300">
               We've run this playbook across industries, and it works. Instead of guessing, you plug into a proven system:
             </p>
           </div>

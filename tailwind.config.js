@@ -5,6 +5,15 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    "max-w-2xl",
+    "max-w-3xl", 
+    "md:max-w-4xl",
+    "max-w-6xl",
+    "px-6",
+    "text-center",
+    "leading-relaxed"
+  ],
   theme: {
     extend: {
       colors: {
