@@ -40,16 +40,16 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,_rgba(59,130,246,0.08),transparent),radial-gradient(50%_50%_at_90%_20%,_rgba(59,130,246,0.04),transparent)]" />
         </div>
-        <div className="container mx-auto max-w-4xl px-6">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8 leading-tight tracking-tight">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <div>
+            <h1 className="mx-auto max-w-3xl text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8 leading-tight tracking-tight">
               Don't get left behind. Get ahead — Alongside AI.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-6 max-w-4xl mx-auto">
+            <p className="mx-auto mt-3 max-w-2xl leading-relaxed not-prose break-words text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-6">
               Most leaders know AI matters — but lack the expertise, roadmap, and adoption plan. We act as your fractional AI team, helping you move from hype to results before competitors pass you by.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <Button asChild size="lg" className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white transform transition will-change-transform hover:scale-[1.015] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="Book a Discovery Call">
+            <div className="mt-8 flex items-center justify-center gap-4 mb-6">
+              <Button asChild size="lg" className="inline-flex w-auto items-center justify-center rounded-xl px-6 py-3 font-semibold transition text-lg bg-blue-600 hover:bg-blue-700 text-white transform will-change-transform hover:scale-[1.015] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="Book a Discovery Call">
                 <a href="https://tidycal.com/m8dn423/30-minute-meeting" target="_blank" rel="noopener">Book a Discovery Call</a>
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 py-4 transition hover:shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="See How It Works">
@@ -269,8 +269,8 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
               AI isn't slowing down. The companies that win are the ones that move now.
             </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-4 transform transition will-change-transform hover:scale-[1.015] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="Book a Discovery Call">
+            <div className="mt-8 flex items-center justify-center gap-4 mb-6">
+              <Button asChild size="lg" className="inline-flex w-auto items-center justify-center rounded-xl px-6 py-3 font-semibold transition bg-white text-blue-600 hover:bg-blue-50 text-lg transform will-change-transform hover:scale-[1.015] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" aria-label="Book a Discovery Call">
                 <a href="https://tidycal.com/m8dn423/30-minute-meeting" target="_blank" rel="noopener">Book a Discovery Call</a>
               </Button>
             </div>

@@ -1,18 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
     "max-w-2xl",
-    "max-w-3xl", 
-    "md:max-w-4xl",
+    "max-w-3xl",
     "max-w-6xl",
     "px-6",
     "text-center",
-    "leading-relaxed"
+    "leading-relaxed",
+    "inline-flex",
+    "w-auto",
+    "items-center",
+    "justify-center",
+    "sm:w-auto",
+    "w-full"
   ],
   theme: {
     extend: {
