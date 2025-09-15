@@ -45,7 +45,7 @@ export default function Home() {
             <h1 className="mx-auto max-w-3xl text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8 leading-tight tracking-tight">
               Don't get left behind. Get ahead — Alongside AI.
             </h1>
-            <p className="mx-auto mt-3 max-w-2xl leading-relaxed not-prose break-words text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-6">
+            <p className="mx-auto mt-3 max-w-2xl leading-relaxed break-words text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-6">
               Most leaders know AI matters — but lack the expertise, roadmap, and adoption plan. We act as your fractional AI team, helping you move from hype to results before competitors pass you by.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4 mb-6">
@@ -71,7 +71,7 @@ export default function Home() {
               Why Alongside AI?
             </h2>
           </div>
-          <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 space-y-6">
+          <div className="max-w-none text-gray-700 dark:text-gray-300 space-y-6">
             <p className="text-lg font-semibold text-gray-900 dark:text-white">
               Most companies are stuck.
             </p>
@@ -118,7 +118,7 @@ export default function Home() {
             <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-8">
               How We Work
             </h2>
-            <p className="mx-auto mt-3 max-w-3xl text-center text-foreground/80 leading-relaxed not-prose break-words text-gray-700 dark:text-gray-300">
+            <p className="mx-auto mt-3 max-w-2xl leading-relaxed break-words text-gray-700 dark:text-gray-300">
               We've run this playbook across industries, and it works. Instead of guessing, you plug into a proven system:
             </p>
           </div>
@@ -238,7 +238,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
               Who We Work With
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="mx-auto mt-3 max-w-2xl leading-relaxed break-words text-lg text-gray-700 dark:text-gray-300 mb-8">
               We partner with leaders at mid-sized companies who:
             </p>
             <ul className="space-y-4 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-left mb-8">
