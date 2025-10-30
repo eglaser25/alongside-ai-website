@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { Metadata } from 'next'
@@ -118,6 +119,66 @@ export default function About() {
                 Our approach is collaborative and practical, ensuring that AI solutions are not 
                 just technically sound but also sustainable and valuable for your business.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Evan */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl rounded-2xl border border-slate-200 bg-slate-50 p-8 md:p-12 shadow-sm">
+            <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
+              <div className="w-full md:w-72 flex-shrink-0">
+                <Image
+                  src="/images/founder-evan-glaser.jpg"
+                  alt="Evan Glaser, Founder & CEO of Alongside AI"
+                  width={896}
+                  height={1088}
+                  className="h-auto w-full rounded-2xl object-cover shadow-lg"
+                  loading="lazy"
+                  sizes="(min-width: 768px) 18rem, 80vw"
+                />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  About Evan
+                </h2>
+                <div className="mt-6 space-y-6 text-lg leading-relaxed text-gray-600">
+                  <p>
+                    I started Alongside AI because I kept seeing the same pattern: organizations excited about AI, but stuck between hype and actual results.
+                  </p>
+                  <p>
+                    For the past decade, I&apos;ve worked at the intersection of AI, cybersecurity, and data privacy&mdash;most recently leading enterprise AI adoption and governance at Credo AI. There, I helped Fortune 500 companies in highly regulated industries move from &quot;Should we use AI?&quot; to &quot;Here&apos;s how AI just saved us 200 hours this month.&quot;
+                  </p>
+                  <p>
+                    The truth is, most companies don&apos;t need a massive AI transformation. They need someone who understands both the technology and the business to help them start small, move fast, and scale what works.
+                  </p>
+                  <p>
+                    That&apos;s what Alongside AI does. We cut through the noise, find the highest-value opportunities, and deliver results in weeks&mdash;not quarters. Whether it&apos;s training teams, building custom tools, or putting practical governance in place, we&apos;re focused on one thing: getting you real value from AI, fast.
+                  </p>
+                  <p>
+                    Before all this, I spent years in cybersecurity and privacy, which taught me that the best technology solutions are the ones people actually use&mdash;and trust.
+                  </p>
+                  <p>
+                    When I&apos;m not working with clients, I&apos;m either golfing, hiking Colorado trails, or building small AI tools for fun&mdash;I believe the best consultants are the ones who still like to get their hands dirty.
+                  </p>
+                  <p className="font-semibold text-gray-900">
+                    Let&apos;s build something useful together.
+                  </p>
+                </div>
+                <div className="mt-8 space-y-2">
+                  <p className="text-base font-semibold text-gray-900">Evan Glaser, Founder &amp; CEO</p>
+                  <a
+                    href="https://www.linkedin.com/in/glaserevan/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+                  >
+                    Connect on LinkedIn
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

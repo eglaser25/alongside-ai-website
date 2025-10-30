@@ -9,8 +9,7 @@ export default function Contact() {
     name: '',
     email: '',
     company: '',
-    message: '',
-    service: ''
+    message: ''
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -20,7 +19,7 @@ export default function Contact() {
     alert('Thank you for your message! We\'ll get back to you soon.')
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -170,26 +169,6 @@ export default function Contact() {
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 border"
                       />
                     </div>
-                    
-                    <div>
-                      <label htmlFor="service" className="block text-sm font-medium text-gray-700">
-                        Service of Interest
-                      </label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 border"
-                      >
-                        <option value="">Select a service...</option>
-                        <option value="workshop">AI Opportunity Workshop</option>
-                        <option value="pilot">Rapid Pilot Project</option>
-                        <option value="retainer">Enablement Retainer</option>
-                        <option value="consultation">General Consultation</option>
-                      </select>
-                    </div>
-                    
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                         Message *

@@ -4,27 +4,38 @@ import { cn } from '@/lib/utils'
 interface SectionProps {
   children: React.ReactNode
   className?: string
-  background?: 'white' | 'gray' | 'gradient'
+  background?: 'white' | 'neutral' | 'primary'
+  containerWidth?: 'default' | 'wide' | 'narrow'
 }
 
-export default function Section({ 
-  children, 
+export default function Section({
+  children,
   className,
-  background = 'white'
+  background = 'white',
+  containerWidth = 'default'
 }: SectionProps) {
   const backgrounds = {
     white: 'bg-white',
-    gray: 'bg-gray-50',
-    gradient: 'bg-gradient-to-r from-blue-600 to-blue-700'
+    neutral: 'bg-neutral-bg',
+    primary: 'bg-primary text-white'
   }
-  
+
+  const containerWidths = {
+    default: 'max-w-6xl',
+    wide: 'max-w-7xl',
+    narrow: 'max-w-4xl'
+  }
+
   return (
     <section className={cn(
-      'py-20 md:py-28',
+      'py-24 md:py-32',
       backgrounds[background],
       className
     )}>
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
+      <div className={cn(
+        'mx-auto px-4 md:px-6',
+        containerWidths[containerWidth]
+      )}>
         {children}
       </div>
     </section>
