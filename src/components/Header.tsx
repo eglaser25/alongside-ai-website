@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/Button'
+import { cn } from '@/lib/utils'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,10 +16,17 @@ export default function Header() {
     }
 
     window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false)
     }
+
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
   }, [])
 
   const navigation = [
@@ -32,91 +40,109 @@ export default function Header() {
   }, [])
 
   return (
-    <header className={`sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-border transition-shadow duration-200 ${isScrolled ? 'shadow-md' : ''}`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 justify-between items-center">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/01 Final Logo Source Files/HQ View Files/SVG/03 Final Logo Reverse Color.svg"
-                alt="Alongside AI"
-                width={200}
-                height={40}
-                className="h-8 sm:h-10 w-auto"
-                priority
-              />
-            </Link>
-          </div>
-          
+    <header
+      className={cn(
+        'sticky top-0 z-50',
+        'bg-surface-primary/95 backdrop-blur-md',
+        'border-b border-border transition-shadow duration-200',
+        isScrolled && 'shadow-sm'
+      )}
+    >
+      <div className="container-default">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/01 Final Logo Source Files/HQ View Files/SVG/03 Final Logo Reverse Color.svg"
+              alt="Alongside AI"
+              width={200}
+              height={40}
+              className="h-8 sm:h-9 w-auto"
+              priority
+            />
+          </Link>
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8">
+          <nav className="hidden md:flex items-center gap-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-neutral-light hover:text-neutral-text px-3 py-2 text-sm font-medium transition-colors"
+                className="px-4 py-2 text-body-sm font-medium text-text-secondary hover:text-text-primary transition-colors rounded-lg hover:bg-surface-subtle"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center">
             <Button variant="primary" size="default" onClick={openBooking}>
               Get Started
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-neutral-light hover:text-neutral-text focus:outline-none"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 -mr-2 text-text-secondary hover:text-text-primary rounded-lg hover:bg-surface-subtle transition-colors"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-neutral-border">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-neutral-light hover:text-neutral-text hover:bg-neutral-bg block px-3 py-2 text-base font-medium rounded-md transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="mt-4 px-3">
-                <Button
-                  variant="primary"
-                  size="default"
-                  className="w-full"
-                  onClick={() => {
-                    openBooking()
-                    setIsMenuOpen(false)
-                  }}
-                >
-                  Get Started
-                </Button>
-              </div>
+        <div
+          className={cn(
+            'md:hidden overflow-hidden transition-all duration-200',
+            isMenuOpen ? 'max-h-64 pb-4' : 'max-h-0'
+          )}
+        >
+          <div className="pt-2 space-y-1">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-4 py-3 text-body font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle rounded-lg transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="pt-3 px-4">
+              <Button
+                variant="primary"
+                size="default"
+                className="w-full"
+                onClick={() => {
+                  openBooking()
+                  setIsMenuOpen(false)
+                }}
+              >
+                Get Started
+              </Button>
             </div>
           </div>
-        )}
+        </div>
       </div>
-
     </header>
   )
 }

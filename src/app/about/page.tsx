@@ -127,57 +127,84 @@ export default function About() {
       {/* About Evan */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl rounded-2xl border border-slate-200 bg-slate-50 p-8 md:p-12 shadow-sm">
-            <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
-              <div className="w-full md:w-72 flex-shrink-0">
-                <Image
-                  src="/images/founder-evan-glaser.jpg"
-                  alt="Evan Glaser, Founder & CEO of Alongside AI"
-                  width={896}
-                  height={1088}
-                  className="h-auto w-full rounded-2xl object-cover shadow-lg"
-                  loading="lazy"
-                  sizes="(min-width: 768px) 18rem, 80vw"
-                />
+          <div className="mx-auto max-w-5xl">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+              {/* Left column - Photo and credentials */}
+              <div className="lg:col-span-4">
+                <div className="lg:sticky lg:top-8">
+                  <Image
+                    src="/images/founder-evan-glaser.jpg"
+                    alt="Evan Glaser, Founder & CEO of Alongside AI"
+                    width={896}
+                    height={1088}
+                    className="h-auto w-full rounded-2xl object-cover shadow-lg"
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 20rem, (min-width: 768px) 50vw, 100vw"
+                  />
+                  <div className="mt-6">
+                    <p className="text-lg font-semibold text-gray-900">Evan Glaser</p>
+                    <p className="text-sm text-gray-500 mb-4">Founder & CEO</p>
+                    <a
+                      href="https://www.linkedin.com/in/glaserevan/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                    >
+                      Connect on LinkedIn
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="flex-1">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+
+              {/* Right column - Bio and what you get */}
+              <div className="lg:col-span-8">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">
                   About Evan
                 </h2>
-                <div className="mt-6 space-y-6 text-lg leading-relaxed text-gray-600">
+
+                <div className="space-y-5 text-base leading-relaxed text-gray-600 max-w-2xl">
                   <p>
                     I started Alongside AI because I kept seeing the same pattern: organizations excited about AI, but stuck between hype and actual results.
                   </p>
                   <p>
-                    For the past decade, I&apos;ve worked at the intersection of AI, cybersecurity, and data privacy&mdash;most recently leading enterprise AI adoption and governance at Credo AI. There, I helped Fortune 500 companies in highly regulated industries move from &quot;Should we use AI?&quot; to &quot;Here&apos;s how AI just saved us 200 hours this month.&quot;
+                    For the past decade, I have worked at the intersection of AI, cybersecurity, and data privacy. Most recently leading enterprise AI adoption and governance at Credo AI, I helped Fortune 500 companies in highly regulated industries move from &quot;Should we use AI?&quot; to &quot;Here is how AI just saved us 200 hours this month.&quot;
                   </p>
                   <p>
-                    The truth is, most companies don&apos;t need a massive AI transformation. They need someone who understands both the technology and the business to help them start small, move fast, and scale what works.
+                    The truth is, most companies do not need a massive AI transformation. They need someone who understands both the technology and the business to help them start small, move fast, and scale what works.
                   </p>
                   <p>
-                    That&apos;s what Alongside AI does. We cut through the noise, find the highest-value opportunities, and deliver results in weeks&mdash;not quarters. Whether it&apos;s training teams, building custom tools, or putting practical governance in place, we&apos;re focused on one thing: getting you real value from AI, fast.
-                  </p>
-                  <p>
-                    Before all this, I spent years in cybersecurity and privacy, which taught me that the best technology solutions are the ones people actually use&mdash;and trust.
-                  </p>
-                  <p>
-                    When I&apos;m not working with clients, I&apos;m either golfing, hiking Colorado trails, or building small AI tools for fun&mdash;I believe the best consultants are the ones who still like to get their hands dirty.
-                  </p>
-                  <p className="font-semibold text-gray-900">
-                    Let&apos;s build something useful together.
+                    Before all this, I spent years in cybersecurity and privacy, which taught me that the best technology solutions are the ones people actually use and trust.
                   </p>
                 </div>
-                <div className="mt-8 space-y-2">
-                  <p className="text-base font-semibold text-gray-900">Evan Glaser, Founder &amp; CEO</p>
-                  <a
-                    href="https://www.linkedin.com/in/glaserevan/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
-                  >
-                    Connect on LinkedIn
-                  </a>
+
+                {/* What you get - derived from services */}
+                <div className="mt-10 pt-8 border-t border-gray-200">
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">What you get working with us</h3>
+                  <ul className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      'AI opportunity assessment and roadmap',
+                      'Hands-on implementation support',
+                      'Team training and enablement',
+                      'Governance frameworks from day one',
+                      'Measurable outcomes, not just strategy decks',
+                      'A partner invested in your success',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                        <svg className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+
+                <p className="mt-8 text-base font-semibold text-gray-900">
+                  Let&apos;s build something useful together.
+                </p>
               </div>
             </div>
           </div>
@@ -248,7 +275,7 @@ export default function About() {
             </p>
             <div className="mt-8">
               <Link href="/contact">
-                <Button variant="outline" size="lg">
+                <Button variant="inverse" size="lg">
                   Get in Touch
                 </Button>
               </Link>

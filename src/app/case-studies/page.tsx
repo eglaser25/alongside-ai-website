@@ -198,7 +198,7 @@ export default function CaseStudies() {
             </p>
             <div className="mt-8">
               <Link href="/contact">
-                <Button variant="outline" size="lg">
+                <Button variant="inverse" size="lg">
                   Start Your AI Journey
                 </Button>
               </Link>
