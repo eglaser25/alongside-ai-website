@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,23 +9,28 @@
    ============================================ */
 
 :root {
-  /* Brand Colors */
-  --color-brand: #1e40af;
-  --color-brand-hover: #1e3a8a;
-  --color-brand-subtle: #dbeafe;
-  --color-brand-muted: #eff6ff;
+  /* Brand Colors - Stitch Palette */
+  --color-primary: #3312f3;
+  --color-midnight: #091017;
+  --color-first-shade: #C9DFF2;
+
+  /* Brand Semantic Colors */
+  --color-brand: #3312f3;
+  --color-brand-hover: #2a0ed4;
+  --color-brand-subtle: #C9DFF2;
+  --color-brand-muted: #e8f1fa;
 
   /* Background Colors */
   --color-bg-primary: #ffffff;
   --color-bg-subtle: #f9fafb;
   --color-bg-elevated: #ffffff;
-  --color-bg-inverse: #0f172a;
-  --color-bg-emphasis: #0f172a;
+  --color-bg-inverse: #091017;
+  --color-bg-emphasis: #091017;
 
   /* Text Colors */
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-tertiary: #94a3b8;
+  --color-text-primary: #091017;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #718096;
   --color-text-inverse: #ffffff;
   --color-text-muted: #64748b;
 
@@ -35,8 +40,8 @@
   --color-border-strong: #cbd5e1;
 
   /* Accent (signature element) */
-  --color-accent: #1e40af;
-  --color-accent-subtle: #dbeafe;
+  --color-accent: #1335F2;
+  --color-accent-subtle: #C9DFF2;
 
   /* Status Colors */
   --color-success: #059669;
@@ -62,6 +67,11 @@
   body {
     @apply bg-surface-primary text-text-primary;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* Headlines use Public Sans Bold/Black */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
   }
 
   :focus-visible {
@@ -279,29 +289,6 @@
   @apply outline-none ring-2 ring-brand ring-offset-2;
 }
 
-/* Pricing card tactile states */
-.pricing-card {
-  @apply transition-all duration-200 ease-out;
-}
-
-.pricing-card:hover {
-  transform: translateY(-4px);
-  @apply shadow-xl;
-}
-
-.pricing-card:focus-within {
-  @apply ring-2 ring-brand ring-offset-2;
-}
-
-.pricing-card-featured {
-  @apply transition-all duration-200 ease-out;
-}
-
-.pricing-card-featured:hover {
-  transform: translateY(-6px) scale(1.01);
-  @apply shadow-2xl;
-}
-
 /* ============================================
    Reduced Motion
    ============================================ */
@@ -316,8 +303,6 @@
     scroll-behavior: auto !important;
   }
 
-  .pricing-card:hover,
-  .pricing-card-featured:hover,
   .card-interactive:hover {
     transform: none !important;
   }

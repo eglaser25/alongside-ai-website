@@ -1,10 +1,10 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
-import { Button } from '@/components/ui/Button'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
+
+const BOOKING_URL = 'https://tidycal.com/m8dn423/30-minute-meeting'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,7 +19,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close menu on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsMenuOpen(false)
@@ -29,63 +28,69 @@ export default function Header() {
     return () => document.removeEventListener('keydown', handleEscape)
   }, [])
 
-  const navigation = [
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ]
-
   const openBooking = useCallback(() => {
     if (typeof window === 'undefined') return
-    window.open('https://tidycal.com/m8dn423/30-minute-meeting', '_blank', 'noopener,noreferrer')
+    window.open(BOOKING_URL, '_blank', 'noopener,noreferrer')
   }, [])
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-50',
-        'bg-surface-primary/95 backdrop-blur-md',
-        'border-b border-border transition-shadow duration-200',
+        'fixed top-0 w-full z-50',
+        'bg-white/80 backdrop-blur-md',
+        'border-b border-midnight/5 transition-shadow duration-200',
         isScrolled && 'shadow-sm'
       )}
     >
-      <div className="container-default">
-        <div className="flex h-16 items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <div className="flex items-center gap-2.5">
             <Image
-              src="/01 Final Logo Source Files/HQ View Files/SVG/03 Final Logo Reverse Color.svg"
+              src="/logo/alongside-main.svg"
               alt="Alongside AI"
-              width={200}
-              height={40}
-              className="h-8 sm:h-9 w-auto"
-              priority
+              width={24}
+              height={24}
+              style={{ height: 24, width: 'auto' }}
+              className="block object-contain"
             />
-          </Link>
+            <span className="text-midnight text-xl font-black tracking-tighter uppercase">
+              Alongside AI
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="px-4 py-2 text-body-sm font-medium text-text-secondary hover:text-text-primary transition-colors rounded-lg hover:bg-surface-subtle"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-10">
+            <a
+              href="#problem"
+              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+            >
+              The Problem
+            </a>
+            <a
+              href="#services"
+              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+            >
+              Services
+            </a>
+            <a
+              href="#about"
+              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+            >
+              About
+            </a>
+            <button
+              onClick={openBooking}
+              className="bg-brand text-white px-6 py-2.5 rounded font-bold text-sm hover:brightness-110 transition-all"
+            >
+              Book a Call
+            </button>
           </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
-            <Button variant="primary" size="default" onClick={openBooking}>
-              Get Started
-            </Button>
-          </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 -mr-2 text-text-secondary hover:text-text-primary rounded-lg hover:bg-surface-subtle transition-colors"
+            className="md:hidden p-2 -mr-2 text-midnight hover:text-brand rounded-lg hover:bg-midnight/5 transition-colors"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -113,34 +118,41 @@ export default function Header() {
         <div
           className={cn(
             'md:hidden overflow-hidden transition-all duration-200',
-            isMenuOpen ? 'max-h-64 pb-4' : 'max-h-0'
+            isMenuOpen ? 'max-h-64 pb-6' : 'max-h-0'
           )}
         >
-          <div className="pt-2 space-y-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block px-4 py-3 text-body font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle rounded-lg transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="pt-3 px-4">
-              <Button
-                variant="primary"
-                size="default"
-                className="w-full"
-                onClick={() => {
-                  openBooking()
-                  setIsMenuOpen(false)
-                }}
-              >
-                Get Started
-              </Button>
-            </div>
-          </div>
+          <nav className="flex flex-col gap-4 pt-2">
+            <a
+              href="#problem"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+            >
+              The Problem
+            </a>
+            <a
+              href="#services"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+            >
+              Services
+            </a>
+            <a
+              href="#about"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+            >
+              About
+            </a>
+            <button
+              onClick={() => {
+                openBooking()
+                setIsMenuOpen(false)
+              }}
+              className="bg-brand text-white px-6 py-3 rounded font-bold text-sm hover:brightness-110 transition-all w-full"
+            >
+              Book a Call
+            </button>
+          </nav>
         </div>
       </div>
     </header>

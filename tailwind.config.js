@@ -11,11 +11,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Brand colors (new palette)
+        'vivid-blue': '#1335F2',
+        'midnight': '#091017',
+        'first-shade': '#C9DFF2',
+
         // Semantic color tokens
         background: 'var(--color-bg-primary)',
         foreground: 'var(--color-text-primary)',
 
-        // Brand colors
+        // Brand colors (semantic)
         brand: {
           DEFAULT: 'var(--color-brand)',
           hover: 'var(--color-brand-hover)',
@@ -49,30 +54,16 @@ module.exports = {
 
         // Status colors
         success: 'var(--color-success)',
-
-        // Legacy (for gradual migration)
-        primary: {
-          DEFAULT: '#1e40af',
-          dark: '#0f172a',
-          light: '#3b82f6',
-        },
-        neutral: {
-          bg: '#f8fafc',
-          card: '#ffffff',
-          text: '#0f172a',
-          light: '#64748b',
-          border: '#e2e8f0',
-        },
       },
 
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Public Sans', 'system-ui', '-apple-system', 'sans-serif'],
       },
 
       // Type scale
       fontSize: {
-        'display': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '700' }],
-        'display-sm': ['2.25rem', { lineHeight: '1.15', letterSpacing: '-0.025em', fontWeight: '700' }],
+        'display': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '700' }],
+        'display-sm': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.025em', fontWeight: '700' }],
         'h1': ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
         'h2': ['2rem', { lineHeight: '1.25', letterSpacing: '-0.02em', fontWeight: '600' }],
         'h3': ['1.5rem', { lineHeight: '1.35', letterSpacing: '-0.01em', fontWeight: '600' }],
@@ -100,7 +91,7 @@ module.exports = {
         'card-hover': '0 10px 20px -5px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.06)',
         'elevated': '0 4px 12px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
         'button': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        'button-hover': '0 4px 8px -2px rgb(30 64 175 / 0.25)',
+        'button-hover': '0 4px 8px -2px rgb(19 53 242 / 0.25)',
       },
 
       // Border radius
