@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About Alongside AI - AI Strategy & Implementation Consulting',
+  title: 'About Alongside AI -- AI Strategy & Implementation Consulting',
   description: 'Learn about our mission to help businesses implement AI tools thoughtfully and effectively. Meet our founder and discover our values.',
 }
 
