@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const BOOKING_URL = 'https://tidycal.com/alongside-ai/readiness-assessment'
-const BOOKING_URL_AUDIT = 'https://tidycal.com/alongside-ai/opportunity-audit'
+const BOOKING_URL = 'https://tidycal.com/m8dn423/30-minute-meeting'
+const BOOKING_URL_AUDIT = 'https://tidycal.com/m8dn423/15-minute-meeting'
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)

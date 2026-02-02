@@ -68,7 +68,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
             <a
-              href="#problem"
+              href="#questions"
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled
@@ -157,7 +157,7 @@ export default function Header() {
             !isScrolled && 'bg-black/40 backdrop-blur-md p-4 -mx-2'
           )}>
             <a
-              href="#problem"
+              href="#questions"
               onClick={() => setIsMenuOpen(false)}
               className={cn(
                 'text-sm font-semibold transition-colors',

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Hero from '@/components/Hero'
 
-const BOOKING_URL = 'https://tidycal.com/alongside-ai/readiness-assessment'
+const BOOKING_URL = 'https://tidycal.com/m8dn423/30-minute-meeting'
 
 const REGULATORY_FRAMEWORKS = ['EU AI Act', 'NIST RMF', 'GDPR', 'ISO 42001', 'HIPAA', 'SOC 2']
 
@@ -37,7 +37,7 @@ export default function Home() {
           Designed for 3-second scanning by compliance executives.
           Cards address core anxieties; badges provide credibility signal.
           ============================================ */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section id="questions" className="bg-gray-50 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           {/* Section Header */}
           <h2 className="text-center text-sm font-semibold text-midnight/60 uppercase tracking-[0.2em] mb-10 md:mb-14">
