@@ -36,10 +36,10 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 w-full z-50',
-        'bg-white/80 backdrop-blur-md',
-        'border-b border-midnight/5 transition-shadow duration-200',
-        isScrolled && 'shadow-sm'
+        'fixed top-0 w-full z-50 transition-all duration-300',
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-midnight/5 shadow-sm'
+          : 'bg-transparent border-b border-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -52,9 +52,15 @@ export default function Header() {
               width={24}
               height={24}
               style={{ height: 24, width: 'auto' }}
-              className="block object-contain"
+              className={cn(
+                'block object-contain transition-all duration-300',
+                !isScrolled && 'brightness-0 invert'
+              )}
             />
-            <span className="text-midnight text-xl font-black tracking-tighter uppercase">
+            <span className={cn(
+              'text-xl font-black tracking-tighter uppercase transition-colors duration-300',
+              isScrolled ? 'text-midnight' : 'text-white'
+            )}>
               Alongside AI
             </span>
           </div>
@@ -63,25 +69,45 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-10">
             <a
               href="#problem"
-              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled
+                  ? 'text-midnight hover:text-brand'
+                  : 'text-white/80 hover:text-white'
+              )}
             >
               The Problem
             </a>
             <a
               href="#services"
-              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled
+                  ? 'text-midnight hover:text-brand'
+                  : 'text-white/80 hover:text-white'
+              )}
             >
               Services
             </a>
             <a
               href="#about"
-              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled
+                  ? 'text-midnight hover:text-brand'
+                  : 'text-white/80 hover:text-white'
+              )}
             >
               About
             </a>
             <button
               onClick={openBooking}
-              className="bg-brand text-white px-6 py-2.5 rounded font-bold text-sm hover:brightness-110 transition-all"
+              className={cn(
+                'px-6 py-2.5 rounded font-bold text-sm transition-all',
+                isScrolled
+                  ? 'bg-brand text-white hover:brightness-110'
+                  : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm'
+              )}
             >
               Book a Call
             </button>
@@ -90,7 +116,12 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 -mr-2 text-midnight hover:text-brand rounded-lg hover:bg-midnight/5 transition-colors"
+            className={cn(
+              'md:hidden p-2 -mr-2 rounded-lg transition-colors',
+              isScrolled
+                ? 'text-midnight hover:text-brand hover:bg-midnight/5'
+                : 'text-white hover:bg-white/10'
+            )}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -121,25 +152,37 @@ export default function Header() {
             isMenuOpen ? 'max-h-64 pb-6' : 'max-h-0'
           )}
         >
-          <nav className="flex flex-col gap-4 pt-2">
+          <nav className={cn(
+            'flex flex-col gap-4 pt-2 rounded-lg',
+            !isScrolled && 'bg-black/40 backdrop-blur-md p-4 -mx-2'
+          )}>
             <a
               href="#problem"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
+              )}
             >
               The Problem
             </a>
             <a
               href="#services"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
+              )}
             >
               Services
             </a>
             <a
               href="#about"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-midnight hover:text-brand transition-colors"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
+              )}
             >
               About
             </a>
@@ -148,7 +191,12 @@ export default function Header() {
                 openBooking()
                 setIsMenuOpen(false)
               }}
-              className="bg-brand text-white px-6 py-3 rounded font-bold text-sm hover:brightness-110 transition-all w-full"
+              className={cn(
+                'px-6 py-3 rounded font-bold text-sm transition-all w-full',
+                isScrolled
+                  ? 'bg-brand text-white hover:brightness-110'
+                  : 'bg-white/20 text-white hover:bg-white/30'
+              )}
             >
               Book a Call
             </button>
