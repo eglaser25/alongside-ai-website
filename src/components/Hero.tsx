@@ -164,9 +164,9 @@ export default function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         {/* Main headline */}
         <h1 className="mb-8">
-          {/* First line - italic, questioning the assumption */}
+          {/* First line - only "isn't" italicized */}
           <span
-            className={`block italic font-light transition-all duration-700 delay-100 ${
+            className={`block font-light transition-all duration-700 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
             style={{
@@ -176,7 +176,7 @@ export default function Hero() {
               letterSpacing: '-0.01em',
             }}
           >
-            Governance isn&apos;t the brake
+            Governance <em className="italic">isn&apos;t</em> the brake
           </span>
 
           {/* Second line - bold, definitive statement */}

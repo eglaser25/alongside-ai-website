@@ -57,7 +57,7 @@ module.exports = {
       },
 
       fontFamily: {
-        sans: ['Public Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Satoshi', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
       },
 
       // Type scale
