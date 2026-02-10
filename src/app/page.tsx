@@ -244,8 +244,23 @@ export default function Home() {
                 </p>
               </div>
 
+              {/* AIGP Certification */}
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex items-center gap-4 mt-8">
+                <Image
+                  src="/images/aigp-badge.png"
+                  alt="AIGP Certification Badge"
+                  width={56}
+                  height={56}
+                  className="flex-shrink-0"
+                />
+                <div>
+                  <p className="font-bold text-midnight text-sm">AIGP Certified</p>
+                  <p className="text-midnight/60 text-sm">Artificial Intelligence Governance Professional — IAPP</p>
+                </div>
+              </div>
+
               {/* Expertise indicators */}
-              <div className="flex flex-wrap gap-2 mt-8">
+              <div className="flex flex-wrap gap-2 mt-4">
                 <span className="px-3 py-1 bg-brand/5 border border-brand/10 rounded-full text-xs font-semibold text-midnight/70">
                   10+ Years in AI &amp; Security
                 </span>

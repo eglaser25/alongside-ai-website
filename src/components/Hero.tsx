@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
 const BOOKING_URL = 'https://tidycal.com/m8dn423/30-minute-meeting'
 const BOOKING_URL_AUDIT = 'https://tidycal.com/m8dn423/15-minute-meeting'
@@ -298,6 +299,18 @@ export default function Hero() {
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Image
+              src="/images/aigp-badge.png"
+              alt="AIGP Certification Badge"
+              width={48}
+              height={48}
+              className="flex-shrink-0"
+            />
+            <span className="text-sm font-medium text-white/50">
+              IAPP Certified AI Governance Professional
+            </span>
+          </div>
           <p className="text-sm text-white/40 mb-4">
             Trusted by leaders at
           </p>
