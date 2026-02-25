@@ -4,45 +4,67 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-white py-10 px-6 border-t border-midnight/10">
+    <footer className="bg-midnight text-white py-12 px-6 border-t border-white/5">
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 justify-center md:justify-start">
             <Image
               src="/logo/alongside-main.svg"
               alt="Alongside AI"
               width={18}
               height={18}
               style={{ height: 18, width: 'auto' }}
-              className="block object-contain"
+              className="block object-contain brightness-0 invert"
             />
-            <span className="font-bold tracking-tighter text-sm uppercase text-midnight">
+            <span className="font-bold tracking-tighter text-sm uppercase text-white">
               Alongside AI
             </span>
           </div>
 
-          {/* Copyright */}
-          <p className="text-xs text-midnight/40 text-center">
-            © {currentYear} Alongside AI LLC. All rights reserved.
-          </p>
+          {/* Nav links */}
+          <nav className="flex items-center justify-center gap-8">
+            <a
+              href="#how-we-work"
+              className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+            >
+              How We Work
+            </a>
+            <a
+              href="#about"
+              className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+            >
+              Contact
+            </a>
+          </nav>
 
-          {/* Links */}
-          <div className="flex items-center gap-6">
-            <a
-              href="https://www.linkedin.com/in/glaserevan/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-bold text-midnight hover:text-brand transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="mailto:evan@alongside-ai.com"
-              className="text-xs font-bold text-midnight hover:text-brand transition-colors"
-            >
-              Email
-            </a>
+          {/* Social + copyright */}
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <div className="flex items-center gap-6">
+              <a
+                href="https://www.linkedin.com/company/alongside-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold text-white/60 hover:text-white transition-colors"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="mailto:evan@alongside-ai.com"
+                className="text-xs font-bold text-white/60 hover:text-white transition-colors"
+              >
+                Email
+              </a>
+            </div>
+            <p className="text-xs text-white/30">
+              &copy; {currentYear} Alongside AI LLC. All rights reserved.
+            </p>
           </div>
         </div>
       </div>

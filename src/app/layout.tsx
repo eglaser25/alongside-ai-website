@@ -3,8 +3,8 @@ import "./globals.css";
 import Layout from "@/components/Layout";
 
 export const metadata: Metadata = {
-  title: "Alongside AI - AI Strategy & Implementation Consulting",
-  description: "Helping companies deploy and govern AI tools more effectively. Strategic guidance, training, and custom solutions for your AI journey.",
+  title: "Alongside AI - Your AI Team, Already Built",
+  description: "The AI team SMB leaders need but can't justify hiring. We find your bottleneck, build the AI to fix it, and make sure it works.",
 };
 
 export default function RootLayout({

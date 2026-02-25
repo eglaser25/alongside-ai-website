@@ -1,25 +1,84 @@
 import Image from 'next/image'
 import Hero from '@/components/Hero'
+import ClientCard from '@/components/ClientCard'
+import FadeInOnScroll from '@/components/animations/FadeInOnScroll'
 
 const BOOKING_URL = 'https://tidycal.com/m8dn423/30-minute-meeting'
 
-const REGULATORY_FRAMEWORKS = ['EU AI Act', 'NIST RMF', 'GDPR', 'ISO 42001', 'HIPAA', 'SOC 2']
+const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'Find it',
+    description:
+      'We learn your business and identify what\u2019s actually costing you \u2014 the bottleneck, the manual process, the decision that takes too long.',
+  },
+  {
+    number: '02',
+    title: 'Build it',
+    description:
+      'We design and build the AI solution. Not a slide deck \u2014 working software, tested with your data, often within days.',
+  },
+  {
+    number: '03',
+    title: 'Make it stick',
+    description:
+      'We implement alongside your team, handle governance and compliance, and make sure the ROI is real and lasting.',
+  },
+]
 
-const QUESTIONS_WE_ANSWER = [
+const CLIENTS = [
   {
-    question: '"Are we doing enough with AI?"',
-    answer: "We'll help you identify exactly what you should be doing with AI - and show you how to get to production while your competitors are stuck in POC.",
-    icon: 'compass',
+    name: 'Moseley Insurance Group',
+    description: 'Streamlining insurance claims processing with AI that understands policy nuance.',
+    industry: 'Insurance',
   },
   {
-    question: '"Are we doing it safely?"',
-    answer: 'Shadow AI, data leakage, bias, hallucinations - we help you find risks before they become incidents.',
-    icon: 'shield',
+    name: 'Vanguard Retail Development',
+    description: 'Automating project workflows to reduce manual coordination overhead across developments.',
+    industry: 'Real Estate',
   },
   {
-    question: '"What regulations apply?"',
-    answer: "EU AI Act, NIST RMF, GDPR, HIPAA - we'll map what applies to you and build a unified framework that keeps you compliant from day one.",
-    icon: 'document',
+    name: 'SEEN Haircare',
+    description: 'Building AI-powered tools to optimize e-commerce operations and customer experience.',
+    industry: 'Consumer Goods',
+  },
+  {
+    name: 'PeoplePack Talent',
+    description: 'Accelerating recruiting workflows with AI that surfaces the right candidates faster.',
+    industry: 'Recruiting',
+  },
+]
+
+const DIFFERENTIATORS = [
+  {
+    title: 'Speed',
+    description:
+      'Conversation to working prototype in under an hour. Most AI consultants deliver slide decks. We deliver working software.',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Embedded, not outsourced',
+    description:
+      'We work alongside your team, not above them. No handoff docs \u2014 we\u2019re in it with you until it works.',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Business-first',
+    description:
+      'We start with what\u2019s costing you money, not with which AI model is newest. Every project ties back to revenue or efficiency.',
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+      </svg>
+    ),
   },
 ]
 
@@ -27,302 +86,224 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* ============================================
-          HERO SECTION - Premium Dark Design
+          1. HERO
           ============================================ */}
       <Hero />
 
       {/* ============================================
-          QUESTIONS WE ANSWER + REGULATORY BADGES
-
-          Designed for 3-second scanning by compliance executives.
-          Cards address core anxieties; badges provide credibility signal.
+          2. HOW WE WORK — Three-stage journey
           ============================================ */}
-      <section id="questions" className="bg-gray-50 py-16 md:py-20">
+      <section id="how-we-work" className="bg-white py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          {/* Section Header */}
-          <h2 className="text-center text-sm font-semibold text-midnight/60 uppercase tracking-[0.2em] mb-10 md:mb-14">
-            The Questions We Answer
-          </h2>
+          <FadeInOnScroll>
+            <h2 className="text-center text-sm font-semibold text-midnight/60 uppercase tracking-[0.2em] mb-14">
+              How We Work
+            </h2>
+          </FadeInOnScroll>
 
-          {/* Three Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {QUESTIONS_WE_ANSWER.map((item, index) => (
-              <article
-                key={index}
-                className="bg-white rounded-xl border border-gray-200 p-8 hover:border-brand/30 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-              >
-                {/* Icon */}
-                <div className="mb-4 text-midnight/30">
-                  {item.icon === 'compass' && (
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                    </svg>
-                  )}
-                  {item.icon === 'shield' && (
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                    </svg>
-                  )}
-                  {item.icon === 'document' && (
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-                    </svg>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
+            {PROCESS_STEPS.map((step, index) => (
+              <FadeInOnScroll key={step.number} delay={index * 0.1}>
+                <div className="flex flex-col md:flex-row items-stretch">
+                  <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all flex flex-col flex-1">
+                    <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-5">
+                      <span
+                        className="text-lg font-black"
+                        style={{
+                          background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                        }}
+                      >
+                        {step.number}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-midnight mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-base text-midnight/60 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                  {/* Connector line between cards (desktop only) */}
+                  {index < PROCESS_STEPS.length - 1 && (
+                    <div className="hidden md:flex items-center justify-center w-8 flex-shrink-0">
+                      <div className="w-full border-t-2 border-dashed border-gray-200" />
+                    </div>
                   )}
                 </div>
-
-                {/* Question */}
-                <h3 className="text-xl md:text-[22px] font-bold text-midnight mb-4 leading-tight">
-                  {item.question}
-                </h3>
-
-                {/* Answer */}
-                <p className="text-base text-midnight/60 leading-relaxed">
-                  {item.answer}
-                </p>
-              </article>
+              </FadeInOnScroll>
             ))}
-          </div>
-        </div>
-
-        {/* Regulatory Framework Badges */}
-        <div className="bg-gray-100/80 mt-16 py-8">
-          <div className="max-w-6xl mx-auto px-6 text-center">
-            <p className="text-sm text-midnight/50 mb-5">
-              Expertise in the frameworks you need:
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-2 text-sm font-medium text-midnight/50">
-              {REGULATORY_FRAMEWORKS.map((framework, index) => (
-                <span key={framework} className="flex items-center">
-                  <span className="tracking-wide">{framework}</span>
-                  {index < REGULATORY_FRAMEWORKS.length - 1 && (
-                    <span className="mx-3 text-midnight/20">|</span>
-                  )}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
       {/* ============================================
-          WHAT WE DO SECTION - Dark background
+          3. WHO WE WORK WITH — Client proof cards
           ============================================ */}
       <section
-        className="py-24 md:py-32 px-6"
-        id="services"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: '#0f172a' }}
       >
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="font-black uppercase tracking-widest text-xs" style={{ color: '#60a5fa' }}>Our Services</span>
-            <h2 className="text-4xl md:text-6xl font-extrabold mt-4 text-white">What We Do</h2>
-            <p className="mt-4 max-w-2xl mx-auto" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-              Results delivered in weeks, not months. We combine strategic advisory with hands-on implementation.
+        <div className="max-w-6xl mx-auto">
+          <FadeInOnScroll>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-[0.2em] mb-4" style={{ color: '#60a5fa' }}>
+              Who We Work With
+            </h2>
+            <p className="text-center text-white/60 max-w-xl mx-auto mb-14">
+              Real work, in progress. We partner with businesses across regulated industries to build AI that delivers.
             </p>
+          </FadeInOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CLIENTS.map((client, index) => (
+              <FadeInOnScroll key={client.name} delay={index * 0.08}>
+                <ClientCard
+                  name={client.name}
+                  description={client.description}
+                  industry={client.industry}
+                />
+              </FadeInOnScroll>
+            ))}
           </div>
-          <div className="grid md:grid-cols-3 gap-8 md:gap-0">
-            {/* Strategy */}
-            <div className="flex flex-col md:pr-8 md:border-r" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
-              <svg className="w-10 h-10 text-blue-400 mb-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-              </svg>
-              <h3 className="text-2xl font-bold text-white mb-3">Strategy</h3>
-              <p className="leading-relaxed mb-6" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                Identify where AI creates real business value. Build roadmaps that prioritize impact over experimentation. Align technical possibilities with organizational readiness.
-              </p>
-              <div
-                className="p-5 rounded-lg mt-auto"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  borderLeft: '4px solid #3b82f6',
-                }}
-              >
-                <p style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 500, lineHeight: 1.5 }}>
-                  Financial services firm: Governance framework enabling 3x faster model deployment while maintaining audit readiness
-                </p>
-              </div>
-            </div>
+        </div>
+      </section>
 
-            {/* Engineering */}
-            <div className="flex flex-col md:px-8 md:border-r" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
-              <svg className="w-10 h-10 text-blue-400 mb-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-              </svg>
-              <h3 className="text-2xl font-bold text-white mb-3">Engineering</h3>
-              <p className="leading-relaxed mb-6" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                Build and deploy AI systems that work. From prompt engineering to production infrastructure. Hands-on implementation, not just recommendations.
-              </p>
-              <div
-                className="p-5 rounded-lg mt-auto"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  borderLeft: '4px solid #3b82f6',
-                }}
-              >
-                <p style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 500, lineHeight: 1.5 }}>
-                  Healthcare organization: HIPAA-compliant AI assistant for clinical documentation deployed in 6 weeks, saving 2 hours per clinician daily
-                </p>
-              </div>
-            </div>
+      {/* ============================================
+          4. WHY US — Differentiators
+          ============================================ */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <FadeInOnScroll>
+            <h2 className="text-center text-sm font-semibold text-midnight/60 uppercase tracking-[0.2em] mb-14">
+              Why Alongside
+            </h2>
+          </FadeInOnScroll>
 
-            {/* Governance */}
-            <div className="flex flex-col md:pl-8">
-              <svg className="w-10 h-10 text-blue-400 mb-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-              </svg>
-              <h3 className="text-2xl font-bold text-white mb-3">Governance</h3>
-              <p className="leading-relaxed mb-6" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                Create frameworks that enable deployment, not block it. Risk assessment, policy development, and compliance structures that scale with your AI ambitions.
-              </p>
-              <div
-                className="p-5 rounded-lg mt-auto"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  borderLeft: '4px solid #3b82f6',
-                }}
-              >
-                <p style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 500, lineHeight: 1.5 }}>
-                  Insurance company: EU AI Act readiness assessment and documentation package delivered in 3 weeks, avoiding potential $10M in penalties
-                </p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {DIFFERENTIATORS.map((item, index) => (
+              <FadeInOnScroll key={item.title} delay={index * 0.1}>
+                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all">
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-midnight mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-base text-midnight/60 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </FadeInOnScroll>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Section CTA */}
-          <div className="mt-16 text-center">
+      {/* ============================================
+          5. ABOUT — Streamlined founder section
+          ============================================ */}
+      <section className="py-20 md:py-28 px-6 bg-white" id="about">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <FadeInOnScroll>
+              <div className="bg-midnight h-96 rounded-xl flex items-end p-8 relative overflow-hidden ring-1 ring-white/10">
+                <Image
+                  src="/images/founder-evan-glaser.jpg"
+                  alt="Evan Glaser, Co-founder of Alongside AI"
+                  fill
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 to-transparent" />
+                <div className="relative z-10">
+                  <p className="text-white text-lg font-bold">Evan Glaser</p>
+                  <p className="text-white/60 text-sm">Co-founder</p>
+                </div>
+              </div>
+            </FadeInOnScroll>
+            <FadeInOnScroll delay={0.15}>
+              <div className="flex flex-col">
+                <h2 className="text-3xl font-extrabold text-midnight mb-6">
+                  We built this because we kept seeing the same problem.
+                </h2>
+
+                <div className="space-y-4">
+                  <p className="text-midnight/70 text-base leading-relaxed">
+                    Companies know AI matters. But hiring a full AI team is expensive, consultants deliver slide decks instead of software, and internal experiments stall without the right expertise.
+                  </p>
+                  <p className="text-midnight/70 text-base leading-relaxed">
+                    Alongside AI is the team that fills that gap. We bring strategy, engineering, and governance under one roof &mdash; so you get working solutions, not just recommendations.
+                  </p>
+                </div>
+
+                {/* AIGP trust badge */}
+                <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 flex items-center gap-4 mt-8">
+                  <Image
+                    src="/images/aigp-badge.png"
+                    alt="AIGP Certification Badge"
+                    width={48}
+                    height={48}
+                    className="flex-shrink-0"
+                  />
+                  <div>
+                    <p className="font-bold text-midnight text-sm">AIGP Certified</p>
+                    <p className="text-midnight/60 text-xs">AI Governance Professional &mdash; IAPP</p>
+                  </div>
+                </div>
+
+                <a
+                  href="https://www.linkedin.com/in/glaserevan/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-brand font-semibold hover:brightness-110 transition-all inline-flex items-center gap-2 mt-6"
+                >
+                  Connect on LinkedIn
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </FadeInOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          6. CTA — Final call to action
+          ============================================ */}
+      <section className="py-28 md:py-36 px-6" id="contact" style={{ backgroundColor: '#0f172a' }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <FadeInOnScroll>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">
+              Ready to find your bottleneck?
+            </h2>
+            <p className="text-white/60 text-lg max-w-lg mx-auto mt-6 mb-10">
+              Book a 30-minute call. We&apos;ll learn about your business and show you where AI can make a real difference.
+            </p>
+
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold transition-all hover:opacity-80"
-              style={{ color: '#3b82f6' }}
+              className="group inline-flex items-center gap-2 bg-brand text-white px-10 py-5 rounded-xl font-bold text-lg hover:brightness-110 transition-all shadow-xl shadow-brand/20"
             >
-              See how we can help your organization
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              Let&apos;s talk
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </a>
-          </div>
-        </div>
-      </section>
 
-      {/* ============================================
-          ABOUT FOUNDER SECTION - Enhanced credentials
-          ============================================ */}
-      <section className="py-24 md:py-32 px-6 bg-first-shade/30" id="about">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="bg-midnight h-96 rounded-xl flex items-end p-8 relative overflow-hidden group">
-              <Image
-                src="/images/founder-evan-glaser.jpg"
-                alt="Evan Glaser, Founder of Alongside AI"
-                fill
-                className="object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 to-transparent"></div>
-              <div className="relative z-10">
-                <p className="text-white text-lg font-bold">Evan Glaser</p>
-                <p className="text-white/60 text-sm">Founder &amp; CEO</p>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-brand font-bold uppercase tracking-widest text-xs">Our Founder</span>
-              <h2 className="text-4xl font-extrabold text-midnight mt-4 mb-8">Navigating Complexity</h2>
-
-              {/* Bio paragraphs with clear spacing */}
-              <div className="space-y-6">
-                <p className="text-midnight/80 text-lg leading-relaxed">
-                  I help regulated companies move AI projects from proof-of-concept to production—fast.
-                </p>
-
-                <p className="text-midnight/70 text-base leading-relaxed">
-                  Most teams think governance will slow them down. The opposite is true. After training advisors at top consulting firms on AI governance and working with Fortune 100 clients, I&apos;ve learned that projects stall because of governance gaps, not governance itself.
-                </p>
-
-                <p className="text-midnight/70 text-base leading-relaxed">
-                  Alongside AI was founded on that insight: build governance into the foundation, and teams move faster with confidence.
-                </p>
-              </div>
-
-              {/* AIGP Certification */}
-              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex items-center gap-4 mt-8">
-                <Image
-                  src="/images/aigp-badge.png"
-                  alt="AIGP Certification Badge"
-                  width={56}
-                  height={56}
-                  className="flex-shrink-0"
-                />
-                <div>
-                  <p className="font-bold text-midnight text-sm">AIGP Certified</p>
-                  <p className="text-midnight/60 text-sm">Artificial Intelligence Governance Professional — IAPP</p>
-                </div>
-              </div>
-
-              {/* Expertise indicators */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="px-3 py-1 bg-brand/5 border border-brand/10 rounded-full text-xs font-semibold text-midnight/70">
-                  10+ Years in AI &amp; Security
-                </span>
-                <span className="px-3 py-1 bg-brand/5 border border-brand/10 rounded-full text-xs font-semibold text-midnight/70">
-                  EU AI Act Expert
-                </span>
-                <span className="px-3 py-1 bg-brand/5 border border-brand/10 rounded-full text-xs font-semibold text-midnight/70">
-                  NIST RMF
-                </span>
-                <span className="px-3 py-1 bg-brand/5 border border-brand/10 rounded-full text-xs font-semibold text-midnight/70">
-                  GDPR
-                </span>
-              </div>
-
+            <p className="text-white/30 text-sm mt-10">
+              Or email{' '}
               <a
-                href="https://www.linkedin.com/in/glaserevan/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-brand font-semibold hover:brightness-110 transition-all inline-flex items-center gap-2 mt-8"
+                href="mailto:evan@alongside-ai.com"
+                className="text-white/50 hover:text-white transition-colors"
               >
-                Connect on LinkedIn
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+                evan@alongside-ai.com
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================
-          CTA SECTION - Single focused CTA
-          ============================================ */}
-      <section className="bg-white py-32 px-6 border-t border-midnight/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-midnight">
-            Let&apos;s talk about what&apos;s stuck.
-          </h2>
-          <p className="text-midnight/60 text-lg max-w-lg mx-auto mt-6 mb-10">
-            Book a readiness assessment to identify where AI creates value fastest for your organization.
-          </p>
-
-          {/* Primary CTA */}
-          <a
-            href={BOOKING_URL}
-            className="group inline-flex items-center gap-2 bg-brand text-white px-10 py-5 rounded-xl font-bold text-lg hover:brightness-110 transition-all shadow-xl shadow-brand/20"
-          >
-            Get Your AI Roadmap in Days
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-
-          <p className="text-midnight/40 text-sm mt-10">
-            Or email{' '}
-            <a
-              href="mailto:evan@alongside-ai.com"
-              className="text-midnight/60 hover:text-brand transition-colors"
-            >
-              evan@alongside-ai.com
-            </a>
-          </p>
+            </p>
+          </FadeInOnScroll>
         </div>
       </section>
     </div>

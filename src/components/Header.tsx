@@ -1,10 +1,8 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-
-const BOOKING_URL = 'https://tidycal.com/m8dn423/30-minute-meeting'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,11 +24,6 @@ export default function Header() {
 
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
-  }, [])
-
-  const openBooking = useCallback(() => {
-    if (typeof window === 'undefined') return
-    window.open(BOOKING_URL, '_blank', 'noopener,noreferrer')
   }, [])
 
   return (
@@ -68,7 +61,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
             <a
-              href="#questions"
+              href="#how-we-work"
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled
@@ -76,18 +69,7 @@ export default function Header() {
                   : 'text-white/80 hover:text-white'
               )}
             >
-              The Problem
-            </a>
-            <a
-              href="#services"
-              className={cn(
-                'text-sm font-semibold transition-colors',
-                isScrolled
-                  ? 'text-midnight hover:text-brand'
-                  : 'text-white/80 hover:text-white'
-              )}
-            >
-              Services
+              How We Work
             </a>
             <a
               href="#about"
@@ -100,17 +82,17 @@ export default function Header() {
             >
               About
             </a>
-            <button
-              onClick={openBooking}
+            <a
+              href="#contact"
               className={cn(
-                'px-6 py-2.5 rounded font-bold text-sm transition-all',
+                'text-sm font-semibold transition-colors',
                 isScrolled
-                  ? 'bg-brand text-white hover:brightness-110'
-                  : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm'
+                  ? 'text-midnight hover:text-brand'
+                  : 'text-white/80 hover:text-white'
               )}
             >
-              Book a Call
-            </button>
+              Contact
+            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -157,24 +139,14 @@ export default function Header() {
             !isScrolled && 'bg-black/40 backdrop-blur-md p-4 -mx-2'
           )}>
             <a
-              href="#questions"
+              href="#how-we-work"
               onClick={() => setIsMenuOpen(false)}
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
               )}
             >
-              The Problem
-            </a>
-            <a
-              href="#services"
-              onClick={() => setIsMenuOpen(false)}
-              className={cn(
-                'text-sm font-semibold transition-colors',
-                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
-              )}
-            >
-              Services
+              How We Work
             </a>
             <a
               href="#about"
@@ -186,20 +158,16 @@ export default function Header() {
             >
               About
             </a>
-            <button
-              onClick={() => {
-                openBooking()
-                setIsMenuOpen(false)
-              }}
+            <a
+              href="#contact"
+              onClick={() => setIsMenuOpen(false)}
               className={cn(
-                'px-6 py-3 rounded font-bold text-sm transition-all w-full',
-                isScrolled
-                  ? 'bg-brand text-white hover:brightness-110'
-                  : 'bg-white/20 text-white hover:bg-white/30'
+                'text-sm font-semibold transition-colors',
+                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
               )}
             >
-              Book a Call
-            </button>
+              Contact
+            </a>
           </nav>
         </div>
       </div>
