@@ -52,7 +52,7 @@ export default function Hero() {
               letterSpacing: '-0.03em',
             }}
           >
-            <span className="text-white">Your AI team.</span>
+            <span className="text-white">Your AI Team —</span>
             <br />
             <span
               className="relative inline-block pb-2"
@@ -63,7 +63,7 @@ export default function Hero() {
                 backgroundClip: 'text',
               }}
             >
-              Already built.
+              Without the Hire.
             </span>
           </span>
         </h1>
@@ -74,9 +74,9 @@ export default function Hero() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          You don&apos;t need to hire a department. You need a team that understands
-          your business, builds the right AI, and makes sure it actually works.
-          That&apos;s us.
+          A fractional AI team that finds your bottleneck, builds the solution,
+          and handles governance — so you get results without the overhead of a
+          full-time hire.
         </p>
 
         {/* Single CTA */}

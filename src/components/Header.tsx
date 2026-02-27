@@ -84,7 +84,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
             <a
-              href="#how-we-work"
+              href="#how-it-works"
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled
@@ -92,10 +92,21 @@ export default function Header() {
                   : 'text-white/80 hover:text-white'
               )}
             >
-              How We Work
+              How It Works
             </a>
             <a
-              href="#about"
+              href="#pricing"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled
+                  ? 'text-midnight hover:text-brand'
+                  : 'text-white/80 hover:text-white'
+              )}
+            >
+              Pricing
+            </a>
+            <a
+              href="#why-alongside"
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled
@@ -106,7 +117,7 @@ export default function Header() {
               About
             </a>
             <a
-              href="#contact"
+              href="#get-started"
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled
@@ -168,17 +179,27 @@ export default function Header() {
           )}>
             <a
               ref={firstMenuLinkRef}
-              href="#how-we-work"
+              href="#how-it-works"
               onClick={closeMenu}
               className={cn(
                 'text-sm font-semibold transition-colors py-1',
                 isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
               )}
             >
-              How We Work
+              How It Works
             </a>
             <a
-              href="#about"
+              href="#pricing"
+              onClick={closeMenu}
+              className={cn(
+                'text-sm font-semibold transition-colors py-1',
+                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
+              )}
+            >
+              Pricing
+            </a>
+            <a
+              href="#why-alongside"
               onClick={closeMenu}
               className={cn(
                 'text-sm font-semibold transition-colors py-1',
@@ -188,7 +209,7 @@ export default function Header() {
               About
             </a>
             <a
-              href="#contact"
+              href="#get-started"
               onClick={closeMenu}
               className={cn(
                 'text-sm font-semibold transition-colors py-1',

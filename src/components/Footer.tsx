@@ -25,19 +25,25 @@ export default function Footer() {
           {/* Nav links */}
           <nav className="flex items-center justify-center gap-4">
             <a
-              href="#how-we-work"
+              href="#how-it-works"
               className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
-              How We Work
+              How It Works
             </a>
             <a
-              href="#about"
+              href="#pricing"
+              className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
+            >
+              Pricing
+            </a>
+            <a
+              href="#why-alongside"
               className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               About
             </a>
             <a
-              href="#contact"
+              href="#get-started"
               className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               Contact

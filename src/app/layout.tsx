@@ -12,7 +12,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Alongside AI - Your AI Team, Already Built",
-  description: "The AI team SMB leaders need but can't justify hiring. We find your bottleneck, build the AI to fix it, and make sure it works.",
+  description: "Your fractional AI team — without the hire. Strategy, engineering, and governance starting at $4K/month. No proposals, no surprises.",
 };
 
 export default function RootLayout({
