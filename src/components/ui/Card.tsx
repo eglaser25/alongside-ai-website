@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 interface CardProps {
   children: React.ReactNode
@@ -10,7 +11,11 @@ interface CardProps {
 }
 
 export default function Card({ children, className = '', animate = true, featured = false }: CardProps) {
-  const baseClasses = `bg-neutral-card border border-neutral-border rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow ${featured ? 'ring-2 ring-primary' : ''} ${className}`
+  const baseClasses = cn(
+    'bg-surface-primary border border-border rounded-xl p-8 shadow-card hover:shadow-card-hover transition-shadow',
+    featured && 'ring-2 ring-brand',
+    className
+  )
 
   if (animate) {
     return (
@@ -38,7 +43,7 @@ interface CardHeaderProps {
 
 export function CardHeader({ children, className = '' }: CardHeaderProps) {
   return (
-    <div className={`mb-4 ${className}`}>
+    <div className={cn('mb-4', className)}>
       {children}
     </div>
   )
@@ -64,7 +69,7 @@ interface CardTitleProps {
 
 export function CardTitle({ children, className = '' }: CardTitleProps) {
   return (
-    <h3 className={`text-xl font-semibold text-neutral-text ${className}`}>
+    <h3 className={cn('text-xl font-semibold text-text-primary', className)}>
       {children}
     </h3>
   )
@@ -77,7 +82,7 @@ interface CardDescriptionProps {
 
 export function CardDescription({ children, className = '' }: CardDescriptionProps) {
   return (
-    <p className={`text-neutral-light leading-relaxed ${className}`}>
+    <p className={cn('text-text-secondary leading-relaxed', className)}>
       {children}
     </p>
   )

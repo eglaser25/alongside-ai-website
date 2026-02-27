@@ -1,30 +1,53 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
+      const scrolled = window.scrollY > 0
+      setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev))
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false)
+    menuButtonRef.current?.focus()
+  }, [])
+
   useEffect(() => {
+    if (!isMenuOpen) return
+
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMenuOpen(false)
+      if (e.key === 'Escape') closeMenu()
     }
 
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
-  }, [])
+  }, [isMenuOpen, closeMenu])
+
+  // Move focus into menu when opened
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Small delay to let the menu animate open
+      const timer = setTimeout(() => firstMenuLinkRef.current?.focus(), 150)
+      return () => clearTimeout(timer)
+    }
+  }, [isMenuOpen])
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev)
+  }
 
   return (
     <header
@@ -97,7 +120,8 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            ref={menuButtonRef}
+            onClick={toggleMenu}
             className={cn(
               'md:hidden p-2 -mr-2 rounded-lg transition-colors',
               isScrolled
@@ -106,8 +130,9 @@ export default function Header() {
             )}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               {isMenuOpen ? (
                 <path
                   strokeLinecap="round"
@@ -129,20 +154,24 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         <div
+          id="mobile-nav"
+          role="region"
+          aria-label="Mobile navigation"
           className={cn(
-            'md:hidden overflow-hidden transition-all duration-200',
-            isMenuOpen ? 'max-h-64 pb-6' : 'max-h-0'
+            'md:hidden grid transition-[grid-template-rows] duration-200',
+            isMenuOpen ? 'grid-rows-[1fr] pb-6' : 'grid-rows-[0fr]'
           )}
         >
           <nav className={cn(
-            'flex flex-col gap-4 pt-2 rounded-lg',
-            !isScrolled && 'bg-black/40 backdrop-blur-md p-4 -mx-2'
+            'overflow-hidden flex flex-col gap-4 pt-2 rounded-lg',
+            !isScrolled && isMenuOpen && 'bg-black/40 backdrop-blur-md p-4 -mx-2'
           )}>
             <a
+              ref={firstMenuLinkRef}
               href="#how-we-work"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
               className={cn(
-                'text-sm font-semibold transition-colors',
+                'text-sm font-semibold transition-colors py-1',
                 isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
               )}
             >
@@ -150,9 +179,9 @@ export default function Header() {
             </a>
             <a
               href="#about"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
               className={cn(
-                'text-sm font-semibold transition-colors',
+                'text-sm font-semibold transition-colors py-1',
                 isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
               )}
             >
@@ -160,9 +189,9 @@ export default function Header() {
             </a>
             <a
               href="#contact"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
               className={cn(
-                'text-sm font-semibold transition-colors',
+                'text-sm font-semibold transition-colors py-1',
                 isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
               )}
             >

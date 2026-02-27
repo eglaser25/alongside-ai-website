@@ -23,22 +23,22 @@ export default function Footer() {
           </div>
 
           {/* Nav links */}
-          <nav className="flex items-center justify-center gap-8">
+          <nav className="flex items-center justify-center gap-4">
             <a
               href="#how-we-work"
-              className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+              className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               How We Work
             </a>
             <a
               href="#about"
-              className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+              className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               About
             </a>
             <a
               href="#contact"
-              className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+              className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               Contact
             </a>
@@ -46,23 +46,23 @@ export default function Footer() {
 
           {/* Social + copyright */}
           <div className="flex flex-col items-center md:items-end gap-3">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
               <a
                 href="https://www.linkedin.com/company/alongside-ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-bold text-white/60 hover:text-white transition-colors"
+                className="text-xs font-bold text-white/70 hover:text-white transition-colors px-2 py-2"
               >
                 LinkedIn
               </a>
               <a
                 href="mailto:evan@alongside-ai.com"
-                className="text-xs font-bold text-white/60 hover:text-white transition-colors"
+                className="text-xs font-bold text-white/70 hover:text-white transition-colors px-2 py-2"
               >
                 Email
               </a>
             </div>
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-white/50">
               &copy; {currentYear} Alongside AI LLC. All rights reserved.
             </p>
           </div>
