@@ -25,7 +25,7 @@ export default function PricingCard({
       className={cn(
         'card-base p-8 flex flex-col h-full',
         featured
-          ? 'ring-2 ring-brand shadow-card-hover'
+          ? 'shadow-lg'
           : 'shadow-card'
       )}
     >
