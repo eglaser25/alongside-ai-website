@@ -129,7 +129,7 @@
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
-  /* Headlines use Satoshi Bold/Black */
+  /* Headlines use Plus Jakarta Sans Bold */
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
   }
@@ -241,34 +241,9 @@
     @apply card-base shadow-card;
   }
 
-  /* Button base styles */
-  .btn-base {
-    @apply inline-flex items-center justify-center;
-    @apply font-semibold;
-    @apply rounded-lg transition-all duration-200;
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
-    @apply disabled:opacity-50 disabled:pointer-events-none;
-  }
-
-  .btn-primary {
-    @apply btn-base;
-    @apply bg-brand text-white;
-    @apply hover:bg-brand-hover;
-  }
-
-  .btn-secondary {
-    @apply btn-base;
-    @apply bg-transparent text-text-secondary border border-border;
-    @apply hover:border-brand hover:text-brand;
-  }
-
   /* Stat display */
   .stat-display {
     @apply text-5xl md:text-6xl font-bold tracking-tight;
-  }
-
-  .stat-label {
-    @apply text-sm text-text-tertiary uppercase tracking-wider mt-2;
   }
 
   /* Eyebrow label */

@@ -40,12 +40,13 @@ const PRICING_TIERS = [
   {
     title: 'Starter',
     price: '$4,000',
-    description: 'One focused AI initiative per month. Perfect for testing the waters.',
+    description: 'We find your highest-impact AI opportunities and build working prototypes to prove the ROI.',
     features: [
-      '1 AI project per month',
+      'AI Opportunity Assessment',
+      'Working prototypes to validate ROI',
       'Weekly strategy call',
       'Slack support (business hours)',
-      'Basic governance review',
+      'Governance review & risk summary',
     ],
     cta: 'Get Started',
     featured: false,
@@ -53,13 +54,13 @@ const PRICING_TIERS = [
   {
     title: 'Growth',
     price: '$8,000',
-    description: 'Your embedded AI team. Multiple workstreams, faster iteration.',
+    description: 'Production-grade AI your team uses daily. Strategy, build, and governance included.',
     features: [
-      '2–3 concurrent projects',
+      '2–3 concurrent production builds',
       'Twice-weekly syncs',
       'Priority Slack support',
-      'Full governance & compliance',
-      'Quarterly roadmap planning',
+      'Full compliance & documentation',
+      'Quarterly AI roadmap',
     ],
     cta: 'Book a Call',
     featured: true,
@@ -67,14 +68,14 @@ const PRICING_TIERS = [
   {
     title: 'Scale',
     price: '$15,000',
-    description: 'Full AI department capabilities without the department.',
+    description: 'Full AI department capabilities without building the department.',
     features: [
-      'Unlimited active projects',
+      'Unlimited production projects',
       'Dedicated team availability',
       'Same-day response SLA',
       'Enterprise governance suite',
       'Board-ready reporting',
-      'Custom integrations',
+      'Custom integrations & workflows',
     ],
     cta: 'Book a Call',
     featured: false,
@@ -166,6 +167,30 @@ export default function Home() {
           1. HERO
           ============================================ */}
       <Hero />
+
+      {/* ============================================
+          1b. TRUSTED BY
+          ============================================ */}
+      <section className="py-10 md:py-14 bg-surface-primary">
+        <div className="container-wide">
+          <FadeInOnScroll>
+            <div className="text-center">
+              <p className="text-xs font-semibold uppercase tracking-widest text-text-tertiary mb-4">
+                Trusted by
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm font-semibold text-text-secondary">
+                <span>SEEN Haircare</span>
+                <span className="text-text-tertiary/40" aria-hidden="true">&middot;</span>
+                <span>Moseley Insurance Group</span>
+                <span className="text-text-tertiary/40" aria-hidden="true">&middot;</span>
+                <span>Vanguard Retail Development</span>
+                <span className="text-text-tertiary/40" aria-hidden="true">&middot;</span>
+                <span>PeoplePack Talent</span>
+              </div>
+            </div>
+          </FadeInOnScroll>
+        </div>
+      </section>
 
       {/* ============================================
           2. THE PROBLEM — Why hiring doesn't work
@@ -317,27 +342,44 @@ export default function Home() {
             />
           </FadeInOnScroll>
 
+          <FadeInOnScroll delay={0.05}>
+            <p className="text-center text-body-sm text-text-secondary max-w-2xl mx-auto -mt-8 mb-12">
+              Every engagement kicks off with our{' '}
+              <span className="font-semibold text-text-primary">AI Opportunity Assessment</span>
+              {' '}&mdash; a proven process to identify where AI will have the most impact on your business.
+            </p>
+          </FadeInOnScroll>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {PRICING_TIERS.map((tier, index) => (
-              <FadeInOnScroll key={tier.title} delay={index * 0.1}>
+              <FadeInOnScroll key={tier.title} delay={index * 0.1} className="h-full">
                 <PricingCard {...tier} />
               </FadeInOnScroll>
             ))}
           </div>
 
-          <p className="text-center text-body-sm text-text-tertiary mt-10">
-            Know exactly what you need built?{' '}
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover font-medium transition-colors">
-              Let&apos;s talk about a custom project.
-            </a>
-          </p>
+          <div className="text-center mt-10 space-y-2">
+            <p className="text-body-sm text-text-secondary">
+              Not sure which tier is right?{' '}
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover font-semibold transition-colors">
+                Book a free call
+              </a>
+              {' '}&mdash; we&apos;ll help you figure it out.
+            </p>
+            <p className="text-body-sm text-text-tertiary">
+              Have a one-off project in mind?{' '}
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover font-medium transition-colors">
+                Let&apos;s talk custom work.
+              </a>
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ============================================
           5. WHY ALONGSIDE AI — Differentiators
           ============================================ */}
-      <section id="why-alongside" className="section bg-midnight px-6">
+      <section id="why-alongside" className="section bg-midnight">
         <div className="container-wide">
           <FadeInOnScroll>
             <SectionHeader
@@ -450,7 +492,7 @@ export default function Home() {
       {/* ============================================
           7. GET STARTED — Dual CTA
           ============================================ */}
-      <section id="get-started" className="section-lg bg-midnight px-6 texture-noise relative">
+      <section id="get-started" className="section-lg bg-midnight texture-noise relative">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

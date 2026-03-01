@@ -29,15 +29,13 @@ export default function PricingCard({
           : 'shadow-card'
       )}
     >
-      {featured && (
-        <div className="mb-4">
-          <Badge variant="brand">Most Popular</Badge>
-        </div>
-      )}
+      <div className="mb-4 h-7">
+        {featured && <Badge variant="brand">Most Popular</Badge>}
+      </div>
 
       <h3 className="text-h4 text-text-primary">{title}</h3>
 
-      <p className="mt-2 text-text-secondary text-body-sm">{description}</p>
+      <p className="mt-2 text-text-secondary text-body-sm min-h-[3.5rem]">{description}</p>
 
       <p className="mt-4 mb-6">
         <span className="text-display-sm text-text-primary">{price}</span>

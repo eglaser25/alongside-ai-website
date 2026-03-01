@@ -31,13 +31,19 @@ export default function Footer() {
               How It Works
             </a>
             <a
+              href="#results"
+              className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
+            >
+              Results
+            </a>
+            <a
               href="#pricing"
               className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               Pricing
             </a>
             <a
-              href="#why-alongside"
+              href="#about"
               className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >
               About

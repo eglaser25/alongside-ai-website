@@ -95,6 +95,17 @@ export default function Header() {
               How It Works
             </a>
             <a
+              href="#results"
+              className={cn(
+                'text-sm font-semibold transition-colors',
+                isScrolled
+                  ? 'text-midnight hover:text-brand'
+                  : 'text-white/80 hover:text-white'
+              )}
+            >
+              Results
+            </a>
+            <a
               href="#pricing"
               className={cn(
                 'text-sm font-semibold transition-colors',
@@ -106,7 +117,7 @@ export default function Header() {
               Pricing
             </a>
             <a
-              href="#why-alongside"
+              href="#about"
               className={cn(
                 'text-sm font-semibold transition-colors',
                 isScrolled
@@ -175,7 +186,7 @@ export default function Header() {
         >
           <nav className={cn(
             'overflow-hidden flex flex-col gap-4 pt-2 rounded-lg',
-            !isScrolled && isMenuOpen && 'bg-black/40 backdrop-blur-md p-4 -mx-2'
+            isMenuOpen && (isScrolled ? 'bg-white/95 backdrop-blur-md p-4 -mx-2' : 'bg-black/40 backdrop-blur-md p-4 -mx-2')
           )}>
             <a
               ref={firstMenuLinkRef}
@@ -189,6 +200,16 @@ export default function Header() {
               How It Works
             </a>
             <a
+              href="#results"
+              onClick={closeMenu}
+              className={cn(
+                'text-sm font-semibold transition-colors py-1',
+                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
+              )}
+            >
+              Results
+            </a>
+            <a
               href="#pricing"
               onClick={closeMenu}
               className={cn(
@@ -199,7 +220,7 @@ export default function Header() {
               Pricing
             </a>
             <a
-              href="#why-alongside"
+              href="#about"
               onClick={closeMenu}
               className={cn(
                 'text-sm font-semibold transition-colors py-1',
