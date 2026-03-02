@@ -39,7 +39,7 @@ const PROCESS_STEPS = [
 const PRICING_TIERS = [
   {
     title: 'Starter',
-    price: '$4,000',
+    price: '$5,000',
     description: 'We find your highest-impact AI opportunities and build working prototypes to prove the ROI.',
     features: [
       'AI Opportunity Assessment',
@@ -53,7 +53,7 @@ const PRICING_TIERS = [
   },
   {
     title: 'Growth',
-    price: '$8,000',
+    price: '$10,000',
     description: 'Production-grade AI your team uses daily. Strategy, build, and governance included.',
     features: [
       '2–3 concurrent production builds',
@@ -67,7 +67,7 @@ const PRICING_TIERS = [
   },
   {
     title: 'Scale',
-    price: '$15,000',
+    price: '$20,000',
     description: 'Full AI department capabilities without building the department.',
     features: [
       'Unlimited production projects',
