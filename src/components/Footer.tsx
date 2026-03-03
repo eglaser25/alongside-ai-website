@@ -37,12 +37,6 @@ export default function Footer() {
               Results
             </a>
             <a
-              href="#pricing"
-              className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
-            >
-              Pricing
-            </a>
-            <a
               href="#about"
               className="text-xs font-semibold text-white/70 hover:text-white transition-colors px-2 py-2"
             >

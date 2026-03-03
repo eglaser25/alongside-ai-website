@@ -86,10 +86,10 @@ export default function Hero() {
           }`}
         >
           <Button size="lg" asChild className="group relative overflow-hidden rounded-xl px-10 py-4 hover:scale-[1.02] hover:shadow-xl hover:shadow-brand/25">
-            <a href="#pricing">
+            <a href="#how-it-works">
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative flex items-center gap-2">
-                See pricing
+                See how it works
                 <svg
                   className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"

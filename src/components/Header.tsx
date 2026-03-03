@@ -106,17 +106,6 @@ export default function Header() {
               Results
             </a>
             <a
-              href="#pricing"
-              className={cn(
-                'text-sm font-semibold transition-colors',
-                isScrolled
-                  ? 'text-midnight hover:text-brand'
-                  : 'text-white/80 hover:text-white'
-              )}
-            >
-              Pricing
-            </a>
-            <a
               href="#about"
               className={cn(
                 'text-sm font-semibold transition-colors',
@@ -208,16 +197,6 @@ export default function Header() {
               )}
             >
               Results
-            </a>
-            <a
-              href="#pricing"
-              onClick={closeMenu}
-              className={cn(
-                'text-sm font-semibold transition-colors py-1',
-                isScrolled ? 'text-midnight hover:text-brand' : 'text-white/90 hover:text-white'
-              )}
-            >
-              Pricing
             </a>
             <a
               href="#about"

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Hero from '@/components/Hero'
-import PricingCard from '@/components/ui/PricingCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Badge from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -18,67 +17,24 @@ const PROBLEM_STATS = [
 const PROCESS_STEPS = [
   {
     number: '01',
-    title: 'Find it',
-    description:
-      'We learn your business and identify the bottleneck — the manual process, the decision that takes too long, the workflow bleeding money.',
+    title: 'Assess',
+    description: (
+      <>We run our proven <span className="font-semibold text-text-primary">AI Opportunity Assessment</span> to learn your business inside-out and pinpoint exactly where AI will deliver the biggest ROI — no guesswork, just data.</>
+    ),
   },
   {
     number: '02',
-    title: 'Build it',
-    description:
-      'We design and build the AI solution. Not a slide deck — working software, tested with your data, often within days.',
+    title: 'Build',
+    description: (
+      <>We design and build the AI solution. Not a slide deck — <span className="font-semibold text-text-primary">working software</span>, tested with your data, often within days.</>
+    ),
   },
   {
     number: '03',
     title: 'Make it stick',
-    description:
-      'We implement alongside your team, handle governance and compliance, and make sure the ROI is real and lasting.',
-  },
-]
-
-const PRICING_TIERS = [
-  {
-    title: 'Starter',
-    price: '$5,000',
-    description: 'We find your highest-impact AI opportunities and build working prototypes to prove the ROI.',
-    features: [
-      'AI Opportunity Assessment',
-      'Working prototypes to validate ROI',
-      'Weekly strategy call',
-      'Slack support (business hours)',
-      'Governance review & risk summary',
-    ],
-    cta: 'Get Started',
-    featured: false,
-  },
-  {
-    title: 'Growth',
-    price: '$10,000',
-    description: 'Production-grade AI your team uses daily. Strategy, build, and governance included.',
-    features: [
-      '2–3 concurrent production builds',
-      'Twice-weekly syncs',
-      'Priority Slack support',
-      'Full compliance & documentation',
-      'Quarterly AI roadmap',
-    ],
-    cta: 'Book a Call',
-    featured: true,
-  },
-  {
-    title: 'Scale',
-    price: '$20,000',
-    description: 'Full AI department capabilities without building the department.',
-    features: [
-      'Unlimited production projects',
-      'Dedicated team availability',
-      'Same-day response SLA',
-      'Enterprise governance suite',
-      'Board-ready reporting',
-      'Custom integrations & workflows',
-    ],
-    cta: 'Book a Call',
-    featured: false,
+    description: (
+      <>We implement alongside your team, handle <span className="font-semibold text-text-primary">governance and compliance</span>, and make sure adoption is real and lasting.</>
+    ),
   },
 ]
 
@@ -229,7 +185,7 @@ export default function Home() {
           <FadeInOnScroll>
             <SectionHeader
               title="How it works"
-              subtitle="Three steps. No fluff. From bottleneck to working solution."
+              subtitle="Our proven methodology finds the highest-ROI opportunities, builds the solution, and makes it stick."
             />
           </FadeInOnScroll>
 
@@ -237,9 +193,9 @@ export default function Home() {
             {PROCESS_STEPS.map((step, index) => (
               <FadeInOnScroll key={step.number} delay={index * 0.1} className="h-full">
                 <div className="flex flex-col md:flex-row items-stretch h-full">
-                  <div className="card-base shadow-card hover:shadow-card-hover hover:-translate-y-0.5 p-8 flex flex-col flex-1">
-                    <div className="w-12 h-12 rounded-full bg-brand-muted flex items-center justify-center mb-5">
-                      <span className="text-lg font-black text-brand">
+                  <div className="card-base shadow-card hover:shadow-card-hover hover:-translate-y-0.5 p-8 flex flex-col flex-1 border-t-2 border-t-brand">
+                    <div className="w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center mb-5">
+                      <span className="text-lg font-black">
                         {step.number}
                       </span>
                     </div>
@@ -252,7 +208,9 @@ export default function Home() {
                   </div>
                   {index < PROCESS_STEPS.length - 1 && (
                     <div className="hidden md:flex items-center justify-center w-8 flex-shrink-0">
-                      <div className="w-full border-t-2 border-dashed border-border" />
+                      <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
                     </div>
                   )}
                 </div>
@@ -326,52 +284,6 @@ export default function Home() {
               {index < CASE_STUDIES.length - 1 && <div className="threshold-fade" />}
               </Fragment>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================
-          4. PRICING — Simple, transparent pricing
-          ============================================ */}
-      <section id="pricing" className="section bg-surface-subtle">
-        <div className="container-wide">
-          <FadeInOnScroll>
-            <SectionHeader
-              title="Simple, transparent pricing"
-              subtitle="No proposals. No surprise invoices. Pick a tier, start this week."
-            />
-          </FadeInOnScroll>
-
-          <FadeInOnScroll delay={0.05}>
-            <p className="text-center text-body-sm text-text-secondary max-w-2xl mx-auto -mt-8 mb-12">
-              Every engagement kicks off with our{' '}
-              <span className="font-semibold text-text-primary">AI Opportunity Assessment</span>
-              {' '}&mdash; a proven process to identify where AI will have the most impact on your business.
-            </p>
-          </FadeInOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {PRICING_TIERS.map((tier, index) => (
-              <FadeInOnScroll key={tier.title} delay={index * 0.1} className="h-full">
-                <PricingCard {...tier} />
-              </FadeInOnScroll>
-            ))}
-          </div>
-
-          <div className="text-center mt-10 space-y-2">
-            <p className="text-body-sm text-text-secondary">
-              Not sure which tier is right?{' '}
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover font-semibold transition-colors">
-                Book a free call
-              </a>
-              {' '}&mdash; we&apos;ll help you figure it out.
-            </p>
-            <p className="text-body-sm text-text-tertiary">
-              Have a one-off project in mind?{' '}
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover font-medium transition-colors">
-                Let&apos;s talk custom work.
-              </a>
-            </p>
           </div>
         </div>
       </section>
