@@ -54,7 +54,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-end gap-3">
             <div className="flex items-center gap-2">
               <a
-                href="https://www.linkedin.com/company/alongside-ai"
+                href="https://www.linkedin.com/in/glaserevan/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs font-bold text-white/70 hover:text-white transition-colors px-2 py-2"
